@@ -1,4 +1,33 @@
-- name: 🚀 Spaceship (allvao_app) Hizli Senkronizasyon
+name: Allvao Otomatik Yayinlama
+
+on:
+  push:
+    branches:
+      main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Kodlari Al
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Node.js Kur ve Build Yap
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: 📦 Paketleri Yukle
+        run: npm install
+
+      - name: 🔨 Projeyi Derle (Build)
+        run: npm run build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: 🚀 Spaceship (allvao_app) Hizli Senkronizasyon
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -6,12 +35,8 @@
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: ./allvao_app/
-          # 'dangerous-clean-slate' sunucudaki farklı olan her şeyi siler ve 
-          # sadece GitHub'dakileri bırakır. En temiz yöntem budur:
-          dangerous-clean-slate: false 
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
             **/.next/cache/**
-            package-lock.json
