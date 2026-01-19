@@ -1,0 +1,34 @@
+# --- BAĞIMLILIKLAR ---
+# Sunucuda (Spaceship) yeniden kurulacağı için yerel paketleri kaydetmiyoruz.
+node_modules/
+.pnp
+.pnp.js
+
+# --- DERLEME VE ÜRETİM (BUILD) ---
+# 'npm run build' ile oluşan klasörleri Git'e atmıyoruz.
+# Sadece sunucuya yüklerken ZIP içine alacağız.
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# --- GÜVENLİK VE ŞİFRELEME ---
+# Supabase ve Resend anahtarlarını içeren dosyaları ASLA Git'e kaydetmiyoruz.
+.env
+.env.local
+.env.production
+.env.development
+.env*.local
+
+# --- SİSTEM VE LOG DOSYALARI ---
+# Bilgisayarın oluşturduğu gereksiz kalıntılar.
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- ARAÇLAR ---
+.vercel
+.turbo
