@@ -15,7 +15,7 @@ jobs:
       - name: 🛠️ Node.js Kur ve Build Yap
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'  # Sürümü 18'den 20'ye yükselttik
       - run: npm install
       - run: npm run build
 
@@ -26,4 +26,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ./allvao_app/  # SADECE BURAYA GÖNDERİYORUZ
+          server-dir: ./allvao_app/
