@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://allvao.com'),
-  title: "Allvao | Dijital Dünyaların Kesişim Noktası",
+  title: "Allvao | Online Dünyaların Ortak Noktası",
   description: "Finans, teknoloji ve üretkenlik araçlarını tek bir çatıda birleştiren yenilikçi dijital ekosistem.",
 };
 

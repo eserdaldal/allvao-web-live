@@ -1,0 +1,29 @@
+name: Allvao Otomatik Yayinlama
+
+on:
+  push:
+    branches:
+      main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Kodlari Al
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Node.js Kur ve Build Yap
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npm run build
+
+      - name: 🚀 Spaceship (allvao_app) Sunucusuna Isınla
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ./allvao_app/  # SADECE BURAYA GÖNDERİYORUZ

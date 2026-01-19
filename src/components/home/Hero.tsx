@@ -12,8 +12,8 @@ export function Hero() {
                 <div className="flex flex-col items-start text-left space-y-6">
                     <span className="text-sm font-normal tracking-widest uppercase text-[#2A2D34]/80 dark:text-[#E5DCC3]">ALLVAO</span>
                     <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-[#2A2D34] dark:text-[#F7F6F2] leading-tight">
-                        Dijital Dünyaların <br />
-                        Kesişim Noktası
+                        Online Dünyaların <br />
+                        Ortak Noktası
                     </h1>
                     <p className="text-base md:text-lg text-[#2A2D34] dark:text-[#E5DCC3] max-w-xl leading-relaxed text-justify font-light">
                         Dijital evrenin farklı köşelerinde uzmanlaşan, her biri kendi alanında derinleşen projelerin tek bir çatı altında buluştuğu stratejik bir merkezdesiniz. Allvao, bilginin şeffaflığını, teknolojinin dinamizmini ve dijital araçların pratikliğini bir araya getiren çok katmanlı bir ekosistemin öncüsüdür. Kripto dünyasının karmaşık verilerinden teknoloji yayıncılığının heyecan verici gelişmelerine, yapay zekanın sunduğu akıllı çözümlerden hayatı kolaylaştıran dijital araçlara kadar geniş bir yelpazede, kullanıcılarımıza rehberlik ediyoruz. Allvao olarak amacımız, bu farklı dünyalar arasında sarsılmaz bir köprü kurarak, aradığınız güvenilir bilgiye ve ihtiyaç duyduğunuz inovatif çözümlere en yalın ve en etkili şekilde ulaşmanızı sağlamaktır.
