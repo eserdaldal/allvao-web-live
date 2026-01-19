@@ -15,9 +15,15 @@ jobs:
       - name: 🛠️ Node.js Kur ve Build Yap
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Sürümü 18'den 20'ye yükselttik
-      - run: npm install
-      - run: npm run build
+          node-version: '20'
+      
+      - name: 📦 Paketleri Yukle
+        run: npm install
+
+      - name: 🔨 Projeyi Derle (Build)
+        run: npm run build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} # Kasadaki anahtarı robota verdik
 
       - name: 🚀 Spaceship (allvao_app) Sunucusuna Isınla
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
