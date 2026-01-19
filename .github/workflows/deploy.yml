@@ -23,7 +23,9 @@ jobs:
       - name: 🔨 Projeyi Derle (Build)
         run: npm run build
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} # Kasadaki anahtarı robota verdik
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} # Supabase URL robota verildi
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }} # Key robota verildi
 
       - name: 🚀 Spaceship (allvao_app) Sunucusuna Isınla
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
