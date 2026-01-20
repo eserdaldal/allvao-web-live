@@ -1,4 +1,4 @@
-name: Allvao Otomatik Yayinlama
+name: Allvao Kod Denetimi (Build Check)
 
 on:
   push:
@@ -6,37 +6,24 @@ on:
       main
 
 jobs:
-  build-and-deploy:
+  check-build:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Kodlari Al
+      - name: Kodlari Al
         uses: actions/checkout@v3
 
-      - name: 🛠️ Node.js Kur ve Build Yap
+      - name: Node.js Kur (v20)
         uses: actions/setup-node@v3
         with:
           node-version: '20'
       
-      - name: 📦 Paketleri Yukle
+      - name: Paketleri Yukle
         run: npm install
 
-      - name: 🔨 Projeyi Derle (Build)
+      - name: Derleme Testi (Build Test)
         run: npm run build
         env:
+          # Build sirasinda hata cikmamasi icin anahtarlari buraya yaziyoruz
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-
-      - name: 🚀 Spaceship (allvao_app) Hizli Senkronizasyon
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: ./allvao_app/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.next/cache/**
